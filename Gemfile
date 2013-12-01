@@ -27,4 +27,5 @@ gem 'jquery-rails'
 gem 'sass', '3.2.10'
 gem 'newrelic_rpm'
 gem 'devise'
+gem 'faker'
 
