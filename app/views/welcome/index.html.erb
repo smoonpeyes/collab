@@ -1,2 +1,19 @@
-<h1>Welcome to Collab!</h1>
-<p id="index-title">This is the home page for Collab!.</p>
+<div class="hero-unit">
+  <h1>Collab</h1>
+  <p>Collab allows you to create and share content with your friends!</p>
+  <p>
+      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary btn-large' %> or 
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary btn-large' %> today!
+  </p>
+</div>
+
+<div class="row">
+  <div class="span6">
+    <h2>Free Plan</h2>
+    <p>This is some content about how great point 1 is. You should really use Bloccit because of it! No seriously, it really is amazing and great and you should really check it out.</p>
+  </div>
+  <div class="span6">
+    <h2>Premium Plan</h2>
+    <p>This is some content about how great point 2 is. You should really use Bloccit because of it! No seriously, it really is amazing and great and you should really check it out.</p>
+  </div>
+</div>
