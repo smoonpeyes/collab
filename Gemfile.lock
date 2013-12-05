@@ -67,6 +67,8 @@ GEM
     orm_adapter (0.4.0)
     pg (0.17.0)
     polyglot (0.3.3)
+    pundit (0.2.1)
+      activesupport (>= 3.0.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -92,6 +94,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redcarpet (3.0.0)
     sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -128,7 +131,9 @@ DEPENDENCIES
   jquery-rails
   newrelic_rpm
   pg
+  pundit
   rails (= 3.2.13)
+  redcarpet
   sass (= 3.2.10)
   sass-rails (~> 3.2.3)
   sqlite3
