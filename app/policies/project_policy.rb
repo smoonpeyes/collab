@@ -6,16 +6,28 @@ class ProjectPolicy < ApplicationPolicy
       @project = project
     end
 
-    # def create?
-    #   user.admin? or not project.published?
-    # end  
+    def edit?
+      user && project.user_id == user.id
+    end
+
+    def update?
+      user && project.user_id == user.id
+    end
+
+    def create?
+      user
+    end 
+
+    def new?
+      user
+    end  
 end
 
 # What can be seen by current user
   class ProjectPolicy::Scope < Struct.new(:user, :scope)
     def resolve
-      if user.premium?
-        scope.all 
+      if user && user.premium?
+        scope.where(user_id: user.id) | scope.where(private: false) 
       else 
         scope.where(private: false)
       end
