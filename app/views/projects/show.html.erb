@@ -1,5 +1,12 @@
-<h1><%= markdown @project.title %></h1>
+<h1><%= @project.title %></h1>
 
-<%= link_to "Edit", edit_project_path(@project), class: 'btn btn-mini' %>
-
-<p><%= markdown @project.body %></p>
+<div class="row">
+  <div class="span8">
+    <p><%= @project.body %></p>
+  </div>
+  <div class="span4">
+    <% if policy(@project).edit? %>
+      <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-large btn-block' %>
+    <% end %>
+  </div>
+</div>

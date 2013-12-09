@@ -1,13 +1,23 @@
 <h1>All Projects</h1>
-<% @projects.each do |project| %>
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <%= link_to project.title, project %>
-      </h4>
-        <small>
-        submitted <%= time_ago_in_words(project.created_at) %> ago by <%= project.user.name %>
-      </small>
-    </div>
+
+<div class="row">
+  <div class="span8">
+    <% @projects.each do |project| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to project.title, project %>
+          </h4>
+          <small>
+          <%= @project.description %>
+          submitted <%= time_ago_in_words(@project.created_at) %> ago by
+          <%= link_to project.user.name, project.user %>
+          </small>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="span4">
+      <%= link_to "New", new_project_path(@project), class: 'btn btn-large btn-block' %>
+  </div>
+</div>

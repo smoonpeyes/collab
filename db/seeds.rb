@@ -8,7 +8,8 @@
   rand(2..4).times do
     p = Project.create(title: "Public #{Faker::Lorem.words(rand(1..10)).join(" ")}", 
                        body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"),
-                       user_id: u.id)
+                       user_id: u.id,
+                       description: "#{Faker::Lorem.words(rand(1..10)).join(" ")}" )
   end
 end
 
@@ -23,6 +24,7 @@ end
     p = Project.create(title: "Private #{Faker::Lorem.words(rand(1..10)).join(" ")}", 
                        body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"),
                        user_id: u.id, 
+                       description: "#{Faker::Lorem.words(rand(1..10)).join(" ")}",
                        private: true)
   end
 end
@@ -38,6 +40,7 @@ end
     p = Project.create(title: "Private #{Faker::Lorem.words(rand(1..10)).join(" ")}", 
                        body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"),
                        user_id: u.id, 
+                       description: "#{Faker::Lorem.words(rand(1..10)).join(" ")}",
                        private: true)
   end
 
@@ -50,6 +53,7 @@ end
   rand(2..4).times do
     p = Project.create(title: "Public #{Faker::Lorem.words(rand(1..10)).join(" ")}", 
                        body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"),
+                       description: "#{Faker::Lorem.words(rand(1..10)).join(" ")}",
                        user_id: u.id)
   end
 
