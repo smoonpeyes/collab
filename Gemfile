@@ -32,3 +32,7 @@ gem 'pundit'
 gem 'redcarpet'
 gem 'pry'
 gem "friendly_id", "~> 4.0.10"
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'figaro'
