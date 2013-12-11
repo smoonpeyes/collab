@@ -31,4 +31,4 @@ gem 'devise'
 gem 'pundit'
 gem 'redcarpet'
 gem 'pry'
-# gem 'stripe'
+gem "friendly_id", "~> 4.0.10"

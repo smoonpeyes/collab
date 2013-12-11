@@ -21,6 +21,7 @@ class ProjectPolicy < ApplicationPolicy
     def new?
       user
     end  
+
 end
 
 # What can be seen by current user

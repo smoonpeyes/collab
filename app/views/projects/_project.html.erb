@@ -1,0 +1,16 @@
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to project.title, project %>
+          </h4>
+          <small>
+            <%= project.description %>
+          </small><br>
+          <small>
+            submitted <%= time_ago_in_words(project.created_at) %> ago by
+            <%= link_to project.user.name, project.user %>
+          </small>
+        </div>
+      </div>
+
+
