@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    authorize @project
+    authorize! @project
     if @project.update_attributes(params[:project])
       flash[:notice] = "Project was updated."
       redirect_to @project

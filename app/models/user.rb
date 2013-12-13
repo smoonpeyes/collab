@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, 
                   :premium, :avatar
   # attr_accessible :title, :body
-  mount_uploader :avatar, AvatarUploader
+  
   has_many :projects
 
+  mount_uploader :avatar, AvatarUploader
 end
 
