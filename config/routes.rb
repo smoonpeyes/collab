@@ -1,9 +1,8 @@
 Collab::Application.routes.draw do
-  
+
   resources :projects
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', 
-                                    registrations: 'users/registrations' }
+  devise_for :users
   resources :users, only: [:show, :index]
 
   match "about" => 'welcome#about', via: :get

@@ -32,14 +32,7 @@
       <i>(leave blank if you don't want to change it)</i>
     </div>
   </div>
-    <% unless current_user.provider? %>
-    <div class="control-group">
-      <%= f.label :password, class: 'control-label' %>
-      <div class="controls">
-        <%= f.password_field :password %>
-      </div>
-    </div>
-  <% end %>
+
   <div class="control-group">
     <%= image_tag(current_user.avatar.small.url) if current_user.avatar? %>
     <%= f.label :avatar, class: 'control-label' %>
@@ -47,12 +40,7 @@
       <%= f.file_field :avatar %>
     </div>
   </div> 
-  <div class="control-group">
-    <%= f.label :email_favorites, class: 'control-label' %>
-    <div class="controls"> 
-      <%= f.check_box :email_favorites %>
-    </div>
-  </div>   
+  
   <div class="control-group">
     <div class="controls">
       <%= f.submit "Update", class: 'btn' %>
@@ -60,6 +48,7 @@
   </div>  
 <% end %>
 
+<h3>Cancel my account</h3>
 <div class="horizontal-form">
   <div class="control-group">
     <div class="controls">
