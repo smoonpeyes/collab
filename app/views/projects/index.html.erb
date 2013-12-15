@@ -5,8 +5,8 @@
     <%= render partial: "project", collection: @projects %>
   </div>
   <div class="span4">
-    <% if policy(@project).new? %>
-      <%= link_to "New", new_project_path, class: 'btn btn-large btn-block' %>
+    <% if policy(Project.new) %>
+      <%= link_to "New", new_project_path(@project), class: 'btn btn-large btn-block' %>
     <% end %>
   </div>
 </div>
