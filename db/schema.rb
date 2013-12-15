@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131214214829) do
+ActiveRecord::Schema.define(:version => 20131215234543) do
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(:version => 20131214214829) do
     t.datetime "updated_at",                     :null => false
     t.boolean  "private",     :default => false
     t.string   "slug"
-    t.boolean  "owner"
   end
 
   add_index "projects", ["slug"], :name => "index_projects_on_slug"
@@ -59,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20131214214829) do
     t.datetime "updated_at",                                :null => false
     t.boolean  "premium",                :default => false
     t.string   "avatar"
-    t.boolean  "owner"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

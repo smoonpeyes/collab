@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :history
 
-  attr_accessible :body, :title, :description, :user_id, :private, :image, :avatar
+  attr_accessible :body, :title, :description, :user_id, :private
   belongs_to :user
   belongs_to :owner
 
@@ -10,6 +10,5 @@ class Project < ActiveRecord::Base
 
   default_scope order('created_at DESC')
 
-  mount_uploader :image, AvatarUploader
 
 end
