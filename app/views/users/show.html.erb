@@ -1,10 +1,17 @@
-<h1>My Projects</h1>
+<% if @user.projects == current_user %>
+  <h1>My Projects</h1>
+<% else %>
+  <h1><%= @user.name %></h1>
+<% end %>
 
 <div class="row">
   <div class="span8">
+    <h3>Projects</h3>
     <%= render partial: "projects/project", collection: @projects %>
   </div>
   <div class="span4">
+    <% if policy(Project.new).create? %>
       <%= link_to "New", new_project_path, class: 'btn btn-large btn-block' %>
+    <% end %>
   </div>
 </div>

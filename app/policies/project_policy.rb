@@ -15,11 +15,11 @@ class ProjectPolicy < ApplicationPolicy
     end
 
     def create?
-      user
+      user && project.user_id == user.id
     end 
 
     def new?
-      user
+      user && project.user_id == user.id
     end  
 
 end
