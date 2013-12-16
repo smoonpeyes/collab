@@ -1,5 +1,5 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+ 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
   <%= devise_error_messages! %>
   <div class="control-group">
@@ -22,21 +22,18 @@
       </div>
     </div>
   <% end %>
-  <% if signed_in? %>
   <div class="control-group">
     <%= f.label :password, class: 'control-label' %>
     <div class="controls">
       <%= f.password_field :password %> <i>(leave blank if you don't want to change it)</i>
     </div>
   </div>
-  <% else %>
   <div class="control-group">
     <%= f.label :password_confirmation, class: 'control-label' %>
     <div class="controls">
       <%= f.password_field :password_confirmation %>
     </div>
   </div>
-  <% end %>
   <% if current_user.avatar? %>
     <div class="control-group">
       <p class="control-label">Current avatar</p>
@@ -51,14 +48,20 @@
       <%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
     </div>
-  </div>  
+  </div>
+  <div class="control-group">
+    <%= f.label :current_password, class: 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :current_password %>
+    </div>
+  </div>
   <div class="control-group">
     <div class="controls">
       <%= f.submit "Update", class: 'btn' %>
     </div>
   </div>
 <% end %>
-
+ 
 <h3>Cancel my account</h3>
 <div class="horizontal-form">
   <div class="control-group">
