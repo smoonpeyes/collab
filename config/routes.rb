@@ -8,6 +8,7 @@ Collab::Application.routes.draw do
   resources :charges
 
   match "about" => 'welcome#about', via: :get
+  match "pricing" => 'welcome#pricing', via: :get
 
   root :to => 'welcome#index'
 end
