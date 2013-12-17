@@ -20,7 +20,7 @@
       <div class="control-group">
         <%= f.label :body, class: 'control-label' %>
         <div class="controls">
-          <%= f.text_area :body, rows: 8 %>
+          <div id="epiceditor"><%= f.text_area :body, rows: 8 %></div>
         </div>
       </div>
       <div class="control-group">
@@ -31,3 +31,5 @@
     <% end %>
   </div>
 </div>
+
+<script src="epiceditor.min.js"></script>
