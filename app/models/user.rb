@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
                   :premium, :avatar, :avatar_cache
   
   has_many :projects
+  has_many :subscriptions
 
   mount_uploader :avatar, AvatarUploader
 end

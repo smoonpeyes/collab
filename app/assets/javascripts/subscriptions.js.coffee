@@ -2,11 +2,14 @@ jQuery ->
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
   subscription.setupForm()
 
-subscription =
-  setupForm: ->
-    $('#new_subscription').submit ->
-      $('input[type=submit]').attr('disabled', true)
+setupForm: ->
+  $('#new_subscription').submit ->
+    $('input[type=submit]').attr('disabled', true)
+    if $('#card_number').length
       subscription.processCard()
+      false
+    else
+      true
   
   processCard: ->
     card =
