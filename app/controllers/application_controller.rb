@@ -16,9 +16,12 @@ class ApplicationController < ActionController::Base
     projects_path
   end  
 
-    private
-
   def after_sign_up_path_for(resource)
-    new_user_subscription_path
+    new_subscription_path
   end
+
+  def after_inactive_sign_up_path_for(resource)
+    new_subscription_path
+  end
+
 end
