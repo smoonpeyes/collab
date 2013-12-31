@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   
   has_many :projects
   has_many :subscriptions
+  has_many :collaborations
 
   mount_uploader :avatar, AvatarUploader
 end

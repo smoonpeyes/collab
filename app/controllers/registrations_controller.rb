@@ -1,5 +1,15 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
+  def create
+    @user = User.new(params[:subscription])
+      if params[:free_button] || !@user.save
+        render :action => 'new'
+      else
+        flash[:notice, :send_instructions]
+        redirect_to after_sign_up_path_for(@user)
+      end
+  end
+
   def update
         # required for settings form to submit when password is left blank
     if params[:user][:password].blank?

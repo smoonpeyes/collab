@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131215234543) do
+ActiveRecord::Schema.define(:version => 20131231042308) do
+
+  create_table "collaborations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false
@@ -37,6 +44,13 @@ ActiveRecord::Schema.define(:version => 20131215234543) do
 
   add_index "projects", ["slug"], :name => "index_projects_on_slug"
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
+
+  create_table "subscriptions", :force => true do |t|
+    t.string   "email"
+    t.string   "stripe_customer_token"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -28,9 +28,9 @@ end
   class ProjectPolicy::Scope < Struct.new(:user, :scope)
     def resolve
       if user && user.premium?
-        scope.where(user_id: user.id) | scope.where(private: false) 
+        scope.where(user_id: user.id) | scope.where(private: false) | Collaboration.where(user_id: user.id)
       else 
-        scope.where(private: false)
+        scope.where(private: false) | Collaboration.where(user_id: user.id)
       end
     end
   end

@@ -1,4 +1,5 @@
 class Subscription < ActiveRecord::Base
+
   belongs_to user
   validates_presence_of :email
   attr_accessible :email, :stripe_customer_token
