@@ -6,12 +6,16 @@ class ProjectPolicy < ApplicationPolicy
       @project = project
     end
 
+    def show?
+      project.public? || (user && (is_users_project? || is_collaboration?)) 
+    end
+
     def edit?
-      user && project.user_id == user.id
+      (user && (is_users_project? || is_collaboration?)) 
     end
 
     def update?
-      user && project.user_id == user.id
+      (user && (is_users_project? || is_collaboration?)) 
     end
 
     def create?
@@ -22,15 +26,21 @@ class ProjectPolicy < ApplicationPolicy
       user
     end  
 
+    def is_users_project?
+      project.user_id == user.id
+    end
+
+    def is_collaboration?
+      project.collaborations.map{ |c| c.user_id }.include?(user.id)
+    end
+
 end
 
 # What can be seen by current user
   class ProjectPolicy::Scope < Struct.new(:user, :scope)
     def resolve
-      if user && user.premium?
-        scope.where(user_id: user.id) | scope.where(private: false) | Collaboration.where(user_id: user.id)
-      else 
-        scope.where(private: false) | Collaboration.where(user_id: user.id)
+      if user
+        scope.where(user_id: user.id) | scope.joins(:collaborations).where(collaborations: {user_id: user.id}) 
       end
     end
   end

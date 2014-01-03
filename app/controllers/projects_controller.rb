@@ -1,11 +1,12 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = policy_scope(Project)
+    @projects = Project.where(private: false)
   end
 
   def show
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   def new
