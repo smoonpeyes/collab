@@ -19,6 +19,12 @@
         </div>
       </div>
       <div class="control-group">
+          <%= f.label "Collaborators" %>
+          <div class="controls">
+            <%= f.select :email, options_for_select(User.all.map { |u| u.email }) %>   
+          </div>
+      </div>
+      <div class="control-group">
         <%= f.label :private, class: 'control-label' %>
         <div class="controls">
           <%= f.check_box :private %>

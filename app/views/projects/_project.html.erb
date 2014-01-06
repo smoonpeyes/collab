@@ -12,7 +12,7 @@
           <small>
             <% if project.user %>
             <%= image_tag(project.user.avatar.tiny.url) if project.user.avatar? %>
-            submitted <%= time_ago_in_words(project.created_at) %> ago by
+            updated <%= time_ago_in_words(project.created_at) %> ago by
             <%= link_to project.user.name, project.user %>
             <% end %>
           </small>
