@@ -40,3 +40,5 @@ gem 'markdown_preview'
 gem 'epic-editor-rails'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem "font-awesome-rails"
+gem "thin"
+

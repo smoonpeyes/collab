@@ -1,5 +1,5 @@
 <div class="span-6">
-    <%= form_for @project, html: { class: 'form-horizontal' } do |f| %>
+    <%= form_for [@project], url: project_path(@project.id), html: { class: 'form-horizontal' } do |f| %>
       <div class="control-group">
         <%= f.label :title, class: 'control-label' %>
         <div class="controls">
@@ -18,12 +18,25 @@
           <%= f.text_area :body, rows: 8 %>
         </div>
       </div>
+        <%= hidden_field_tag :project_id, value: @project.id %>
       <div class="control-group">
-          <%= f.label "Collaborators" %>
-          <div class="controls">
-            <%= f.select :email, options_for_select(User.all.map { |u| u.email }) %>   
-          </div>
+        <div class="control-label">Collaborators</div>
+        <div class="controls">
+          <ul>
+            <% @project.users.each do |collaborator| %>
+              <li><%= collaborator.email %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
+        <div class="control-group">
+          <%= label_tag "Collaborators", nil, class: 'control-label' %>
+          <div class="controls">
+            <%= select_tag :user_id, options_for_select(User.all.map { |u| [u.email, u.id] }) %> 
+          </div>
+        </div>
+        <%= f.submit "Add Collaborator", name: "add_collaborator", class: "controls" %>
+
       <div class="control-group">
         <%= f.label :private, class: 'control-label' %>
         <div class="controls">
@@ -32,7 +45,7 @@
       </div>
       <div class="control-group">
         <div class="controls">
-          <%= f.submit "Save", class: 'btn' %>
+          <%= f.submit "Save", name: "update_project", class: 'btn' %>
         </div>
       </div>
     <% end %>

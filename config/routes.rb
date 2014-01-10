@@ -1,6 +1,7 @@
 Collab::Application.routes.draw do
 
   resources :projects
+  resources :collaborations
 
   devise_for :users
   resources :users, only: [:show, :index]

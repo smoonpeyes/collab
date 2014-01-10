@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, use: :history
+  friendly_id :title, use: :slugged
 
   attr_accessible :body, :title, :description, :user_id, :private, :email
   belongs_to :user

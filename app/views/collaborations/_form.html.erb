@@ -1,0 +1,10 @@
+<%= form_for Collaboration.new, html: { class: 'form-horizontal' } do |f| %>
+  <%= f.hidden_field :project_id, value: project.id %>
+  <div class="control-group">
+    <%= label_tag "Collaborators", nil, class: 'control-label' %>
+    <div class="controls">
+      <%= select_tag :user_id, options_for_select(User.all.map { |u| [u.email, u.id] }) %> 
+    </div>
+  </div>
+  <%= f.submit "Add Collaborator", name: "add_collaborator" %>
+<% end %>

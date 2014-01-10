@@ -33,12 +33,32 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    authorize! @project
-    if @project.update_attributes(params[:project])
-      flash[:notice] = "Project was updated."
-      redirect_to @project
+    authorize @project
+    if params[:add_collaborator]
+      add_collaborator(params, @project)
     else
-      flash[:error] = "There was an error saving the project. Please try again."
+
+      if params[:update_project] && @project.update_attributes(params[:project]) 
+        flash[:notice] = "Project was updated."
+        redirect_to @project
+      else
+        flash[:error] = "There was an error saving the project. Please try again."
+        render :edit
+      end
+    end
+  end
+
+  def add_collaborator(params, project)
+    if params[:add_collaborator]
+      @collaboration = project.collaborations.create(user_id: params[:user_id])
+      if @collaboration.save
+        flash[:notice] = "Collaborator added." 
+      else
+        flash[:error] = "This collaborator has already been added to the project."
+        render :edit
+      end
+    else
+      flash[:error] = "There was an error adding a collaborator. Please try again."
       render :edit
     end
   end
