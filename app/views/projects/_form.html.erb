@@ -35,7 +35,7 @@
             <%= select_tag :user_id, options_for_select(User.all.map { |u| [u.email, u.id] }) %> 
           </div>
         </div>
-        <%= f.submit "Add Collaborator", name: "add_collaborator", class: "controls" %>
+        <%= link_to "Add Collaborator", collaborations_path(project_id: @project.friendly_id, user_id: :user_id), method: :post, class: "controls" %>
 
       <div class="control-group">
         <%= f.label :private, class: 'control-label' %>
@@ -45,7 +45,11 @@
       </div>
       <div class="control-group">
         <div class="controls">
-          <%= f.submit "Save", name: "update_project", class: 'btn' %>
+          <% if Project.new %>
+            <%= f.submit "Save", name: "new_project", class: 'btn' %>
+          <% else %>
+            <%= f.submit "Save", name: "update_project", class: 'btn' %>
+          <% end %>
         </div>
       </div>
     <% end %>
